@@ -27,7 +27,7 @@ namespace InstagarmBot
         public IWebElement Btn_TakenBy { get { return driver.FindElement(By.XPath("/html/body/span/section/main/div/div/article/header/div[2]/div[1]/div[1]/h2/a")); } }
                                                                                   
         public IWebElement Btn_signUp { get { return driver.FindElement(By.XPath("/html/body/span/section/main/article/div[2]/div[1]/div/form/div[5]/span/button")); } }
-        public IWebElement Btn_login { get { return driver.FindElement(By.XPath("/html/body/span/section/main/div/article/div/div[1]/div/form/div[3]/button")); } }
+        public IWebElement Btn_login { get { return driver.FindElement(By.XPath("/html/body/span/section/main/div/article/div/div[1]/div/form/div[4]/button/div")); } }
         public IWebElement Btn_Followe { get { return driver.FindElement(By.XPath("//html/body/span/section/main/div/div/article/header/div[2]/div[1]/div[2]/button")); } }
         public IWebElement Btn_Like { get { return driver.FindElement(By.XPath("/html/body/span/section/main/div/div/article/div[2]/section[1]/span[1]/button")); } }
         public IWebElement Btn_Stories { get { return driver.FindElement(By.XPath("/html/body/span/section/main/section/div[3]/div[2]/a")); } }

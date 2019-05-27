@@ -81,7 +81,7 @@ namespace Spigram.Areas.UserArea.Controllers
 
 
         [HttpPost]
-        public async Task<IActionResult> trace(Trace trace)
+        public async Task<IActionResult> trace([FromForm] Trace trace)
         {
             if (trace.traceBy == TraceBy.Location)
             {
