@@ -110,7 +110,8 @@ namespace InstagarmBot
                 Elements.UserName.SendKeys(currentuser.InstagramUserName);
                 Elements.Password.SendKeys(currentuser.InstagramPassword);
                 RandomWaite();
-                Elements.Btn_login.SendKeys(Keys.Enter);
+                //Elements.Btn_login.SendKeys(Keys.Enter);
+                Elements.Password.SendKeys(Keys.Enter);
                 RandomWaite();
 
 
