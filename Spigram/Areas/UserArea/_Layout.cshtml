@@ -1,0 +1,286 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+    <title>پنل مدیریت اسپایگرام </title>
+
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="~/images/statics/favicon//ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- Bootstrap 3.3.6 -->
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Font Awesome -->
+    <link href="~/lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Theme style -->
+    <link href="~/lib/Admin-lte/AdminLTE.min.css" rel="stylesheet" />
+    <!-- AdminLTE Skins. Choose a skin from the css/skins
+         folder instead of downloading all of them to reduce the load. -->
+    <link href="~/lib/Admin-lte/_all-skins.min.css" rel="stylesheet" />
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <link href="~/Fonts/Font.css" rel="stylesheet" />
+    <!--Toaster 2.1.1 -->
+    <link href="~/lib/Toaster/Toaster.css" rel="stylesheet" />
+
+    @RenderSection("Styles", false)
+
+</head>
+<body class="hold-transition skin-blue layout-top-nav">
+    <div class="wrapper">
+        <header class="main-header">
+            <!-- Logo -->
+            <!-- Header Navbar: style can be found in header.less -->
+            <nav class="navbar navbar-static-top">
+                <!-- Sidebar toggle button-->
+                <!-- Navbar Right Menu -->
+
+            </nav>
+        </header>
+        <!-- Left side column. contains the logo and sidebar -->
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+
+
+            <!-- Main content -->
+            <section class="content">
+
+                <div class="Row">
+                    <div class="col-md-12">
+                        <div class="box box-danger">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">  چه کاری میخواهید انجام دهید   </h3>
+                            </div>
+                            <div class="box-body">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h5 class="box-title">     لطفا یک از گزینه های زیر را انتخاب کنید   : </h5>
+                                        <br />
+                                    </div>
+                                    <div class="col-md-3" id="index">
+                                        <a href="/userarea/panel/" class="btn btn-block btn-default">تنظمیات ربات</a>
+                                    </div>
+                                    <div class="col-md-3" id="trace">
+                                        <a href="/userarea/panel/trace" class="btn btn-block btn-primary">لایک ، کامنت ، فالو خودکار</a>
+                                    </div>
+                                    <div class="col-md-3" id="like">
+                                        <a href="/userarea/panel/Likeownfollowing" class="btn btn-block btn-warning">لایک پست های فالووینگ های خودم</a>
+
+                                    </div>
+                                    <div class="col-md-3" id="follow">
+                                        <a href="/userarea/panel/follow" class="btn btn-block btn-danger">فالوو کاربران یک پیج</a>
+
+                                    </div>
+                                    <div class="col-md-3" id="unfollow">
+                                        <a href="/userarea/panel/unfollow" class="btn  btn-block btn-info">آنفالو خودکار</a>
+
+                                    </div>
+                                   
+
+                                </div>
+                                <!-- /.box-body -->
+
+
+                            </div>
+                            <script>
+                               document.getElementById('@ViewBag.removedDiv').remove();
+                            </script>
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </section>
+            <section class="content">
+                @RenderBody()
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="box box-danger">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">  راهنمای کار با ربات </h3>
+                            </div>
+                            <div class="box-body">
+                                <h5 class="box-title">     برای راهنمایی هر بخش روی آن کلیک کنید   : </h5>
+
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <br />
+                                    </div>
+                                    <div class="col-md-3">
+                                        <a class="btn btn-block btn-default" data-toggle="modal" data-target="#help_trace">راهنمای لایک ، کامنت ، فالو خودکار</a>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <a class="btn btn-block btn-default" data-toggle="modal" data-target="#help_likeown">راهنمای لایک پست های فالووینگ های خودم</a>
+
+                                    </div>
+                                    <div class="col-md-3">
+                                        <a class="btn btn-block btn-default" data-toggle="modal" data-target="#help_follow">راهنمای فالوو کاربران یک پیج</a>
+
+                                    </div>
+                                    <div class="col-md-3">
+                                        <a class="btn btn-block btn-default" data-toggle="modal" data-target="#help_unfolllow">راهنمای آنفالو خودکار</a>
+
+                                    </div>
+
+
+                                </div>
+                            </div>
+                            <!-- /.box-body -->
+
+
+                        </div>
+
+
+                    </div>
+                </div>
+            </section>
+
+
+            <div class="modal fade" id="help_trace" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title"> راهنمای لایک  ، فالوو وکامنت خودکار </h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+
+                            <p> نام و کاربری رمز عبور حساب اینستاگرام خود را وارد کنید </p>
+                            <p>نوع جست  و جوی خود را انتخاب کنید</p>
+                            <p>اگر نوع جست و جوی شما بر اساس هشتگ است ، هشتگ هدف را وارد کنید ، مثلا : طبیعت_گردی</p>
+                            <p>اگر جست و جوی شما برا اساس شهر و مکان است ، نام شهر و یا استان را به انگلیسی وارد کنید مثلا : tehran</p>
+                            <p>اگر میخواهید پست های یک پیج را هدف قرار دهید گزینه سوم را انتخاب کرده و در قسمت مربوط آدرس پیج را وارد کنید</p>
+                            <p>در قسمت بعدی تعداد پست هایی که میخواهید ربات آنها را رهگیری کند را وارد نمایید</p>
+                            <p>در مرحله بعد لیست کامنت هایی را برای ربات انتخاب کنید تا بصورت تصادفی زیر پست های هدف تایپ کند !</p>
+                            <p>نکته ی مهم : هر چقدر تعداد لیست کامنت های شما بیشتر باشد امکان درج صحیح کامنت ها توسط ربات بیشتر است</p>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">بستن</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="help_likeown" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">  راهنمای لایک پست های فالووینگ های من </h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <p>نام کاربری و رمز عبور ابنستاگرام خود را وارد کنید و دکمه شروع را فشار دهید</p>
+                            <p>با این کار ربات  تمام پست های کسانی را که شما فالو کرده اید را لایک می کند</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">بستن</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="help_follow" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">  راهنمای فالوو خودکار </h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <p>نام کاربری و رمز عبور حساب اینستاگرام خود را وارد کنید</p>
+                            <p>از منوی کشویی انتخاب کنید که چه کسانی را ربات فالو کند ، فالوور ها یا فالووینگ های پیج هدف</p>
+                            <p>تعداد مورد نیاز را وارد نمایید</p>
+                            <p>نکته مهم : این روش محدودیت هایی دارد مثلا هر دقیقه بیشتر از ده نفر را نباید فالوو کرد در غیر اینصورت حساب اینستاگرام شما مسدود میشود ، هر چند اسپایگرام این مورد را بصورت برنامه ریزی شده کنترل می کند اما پیشنهاد می شود از روش ترکیبی برای حصول نتیجه بهتر استفاده نمایید</p>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">بستن</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="help_unfolllow" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title"> راهنمای انفالو خودکار  </h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+
+                            <p>  نام کاربری و رمز عبور را وارد نمایید </p>
+                            <p>تعداد مورد نیاز را وارد نمایید</p>
+                            <p>دکمه شروع را فشار دهید</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">بستن</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+        </div>
+    </div>
+    <!-- /.content-wrapper -->
+    <footer class="main-footer">
+        <ul>
+            <li>
+                <span>طراحی و توسعه</span>
+                <a href="http://dezsite.ir">گروه برنامه نویسی دزسایت</a>
+
+            </li>
+        </ul>
+    </footer>
+
+
+
+    <script src="~/lib/jquery/jQuery-2.2.0.min.js"></script>
+
+    <!-- Bootstrap 3.3.6 -->
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+    <!-- FastClick -->
+    <script src="~/lib/other/fastclick.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="~/lib/Admin-lte/app.min.js"></script>
+
+    <!-- SlimScroll 1.3.0 -->
+    <script src="~/lib/other/jquery.slimscroll.min.js"></script>
+
+    <!--Toaster 2.1.1 -->
+    <script src="~/lib/Toaster/toaster.js"></script>
+
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.unobtrusive-ajax.js"></script>
+
+
+    @RenderSection("Scripts", false)
+
+</body>
+</html>

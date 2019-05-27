@@ -1,0 +1,260 @@
+﻿@model InstagarmBot.Models.Trace
+@{
+    ViewBag.removedDiv = "trace";
+
+
+}
+@section Styles{
+    <link href="~/lib/select2/select2.min.css" rel="stylesheet" />
+}
+@if (!string.IsNullOrWhiteSpace(ViewBag.message))
+{
+    <div class="jumbotron">
+        <h2 class="text-danger">اخطار : !</h2>
+        <h3>@ViewBag.message</h3>
+    </div>
+}
+<div class="row">
+    <div class="col-md-12">
+        <div class="box box-danger">
+            <div class="box-header with-border">
+                <h3 class="box-title">  لایک کامنت ، فالو  خودکار     </h3>
+            </div>
+            <div class="box-body">
+                <div class="row">
+                    <form id="frmbot" asp-action="trace" asp-controller="Panel" asp-area="UserArea" method="post">
+
+
+                        @Html.ValidationSummary("", new { @class = "text-danger" })
+
+                        <div class="form-group col-sm-2">
+                            <label id="lable_TraceBy" for="traceBy"> جست و جو بر اساس </label>
+                            <select asp-for="traceBy" asp-items="Html.GetEnumSelectList<TraceBy>()" id="TraceBy" class="form-control" onchange="TraceByChange()"></select>
+                        </div>
+
+
+                        <div class="form-group col-sm-4">
+                            <label id="lable_Parameter" for="Parameter"> هشتگ    </label>
+                            <input type="text" id="Parameter" onfocus="showmodal()" class="form-control" placeholder=" هشتگ  " onchange="fillOrignial(this.value)">
+                            <input type="hidden" asp-for="parameter" id="ParameterBack">
+                        </div>
+                        <div class="form-group col-sm-2">
+                            <label id="lable_Count" for="count">  تعداد </label>
+                            <input type="text" asp-for="count" id="Count" class="form-control" placeholder="تعداد هدف">
+                        </div>
+                        <div class="form-group col-sm-12">
+                            <label id="lable_CommentList" for="insertComment">  لیست کامنت های سابق    </label>
+                            <br />
+                            @if (!string.IsNullOrWhiteSpace(ViewBag.commentlist))
+                            {
+                                foreach (var item in ViewBag.commentlist.Split(','))
+                                {
+                                    <span class="badge bg-warning" style="cursor:pointer" data-toggle="tooltip" data-placement="top" title="افزودن" onclick="AddDefaults(this)"> @item </span>
+
+                                }
+                            }
+                            <textarea id="insertComment" class="form-control " placeholder="  تایپ کنید و کلید اینتر را فشار دهید " onkeypress="return Addline(this, event)"></textarea>
+                        </div>
+                        <div class="col-md-12">
+                            <div id="commentslist">
+
+
+                            </div>
+                            <input type="hidden" class="form-control" asp-for="CommentList" id="commentlist" value="" />
+                        </div>
+
+                        <div class="form-group col-sm-4 col-sm-offset-4">
+                            <br />
+                            <input id="start" type="submit" class="form-control btn btn-danger" value="شروع" />
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+            <!-- /.box-body -->
+
+
+        </div>
+
+
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="LocationModal" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"> انتخاب موقعیت جغرافیایی </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <select asp-items="Html.GetEnumSelectList<Locations>()" id="TraceBy" class="form-control js-select" onchange="fillinput(this)"></select>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">تایید</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@section Scripts{
+    <script src="~/lib/select2/select2.min.js"></script>
+    <script src="~/lib/select2/fa.js"></script>
+    <script>
+        var CommentArray = [];
+        Array.prototype.remove = function () {
+            var what, a = arguments, L = a.length, ax;
+            while (L && this.length) {
+                what = a[--L];
+                while ((ax = this.indexOf(what)) !== -1) {
+                    this.splice(ax, 1);
+                }
+            }
+            return this;
+        };
+        $(document).ready(function () {
+            $('.js-select').select2(
+                {
+                    width: '100%',
+                    lang: 'fa',
+                });
+        });
+
+
+        function TraceByChange() {
+            var value = document.getElementById("TraceBy").value;
+            var lable_parameter = document.getElementById("lable_Parameter");
+            var parameter = document.getElementById("Parameter");
+            parameter.value = "";
+            if (value == 0) {
+                lable_parameter.textContent = "هشتگ";
+                parameter.setAttribute("placeholder", "هشتگ");
+                parameter.attributes.removeNamedItem("Readonly");
+
+
+            } else if (value == 1) {
+                lable_parameter.textContent = "شهر";
+                parameter.setAttribute("placeholder", "شهر");
+                $('#LocationModal').modal('show');
+                parameter.setAttribute("Readonly", "Readonly");
+
+            } else if (value == 2) {
+                lable_parameter.textContent = "آدرس پیج";
+                parameter.setAttribute("placeholder", "آدرس پیج");
+                parameter.attributes.removeNamedItem("Readonly");
+
+
+            }
+
+        }
+        function AddDefaults(element) {
+
+            var text = $(element).html().trim();
+
+            var e = CommentArray.indexOf(text);
+
+            if (e != -1) {
+                toastr.error('کامنت وارد شده تکراری است ');
+                $(element).html('');
+
+            } else {
+                var div = document.getElementById("commentslist");
+                var input = document.getElementById("commentlist");
+
+                var para = document.createElement("span");
+                para.classList.add("badge");
+                para.classList.add("bg-navy");
+                para.style.marginLeft = "3px";
+                para.setAttribute("data-toggle", "tooltip");
+                para.setAttribute("data-placement", "top");
+                para.setAttribute("title", "حذف");
+                para.setAttribute("onClick", "Remove(this)");
+                var node = document.createTextNode(text);
+
+                para.appendChild(node);
+                div.appendChild(para);
+                CommentArray.remove(text);
+                CommentArray.push(text);
+                input.value = CommentArray;
+                $(element).html('');
+            }
+        }
+        function Addline(element, event) {
+            if (event.keyCode === 13) {
+                if (isEmptyOrSpaces(element.value) == false) {
+                    var e = CommentArray.indexOf(element.value.trim());
+                    if (e != -1) {
+                        toastr.error('کامنت وارد شده تکراری است ')
+                        element.value = '';
+
+                    } else {
+                        var div = document.getElementById("commentslist");
+                        var input = document.getElementById("commentlist");
+
+                        var para = document.createElement("span");
+                        para.classList.add("badge");
+                        para.classList.add("bg-navy");
+                        para.style.marginLeft = "3px";
+                        para.setAttribute("data-toggle", "tooltip");
+                        para.setAttribute("data-placement", "top");
+                        para.setAttribute("title", "حذف");
+                        para.setAttribute("onClick", "Remove(this)");
+                        var node = document.createTextNode(element.value);
+                        para.appendChild(node);
+                        div.appendChild(para);
+                        CommentArray.remove(element.value.trim());
+                        CommentArray.push(element.value.trim());
+                        input.value = CommentArray;
+                        element.value = '';
+                    }
+
+                }
+            }
+
+        }
+
+        function fillinput(el) {
+            var element = el.options[el.selectedIndex];
+            document.getElementById("Parameter").value = element.textContent;
+            document.getElementById("ParameterBack").value = element.value;
+
+
+        }
+        function Remove(element) {
+
+            var text = $(element).html().trim();
+
+            $(element).tooltip('hide');
+            var input = document.getElementById("commentlist");
+            CommentArray.remove(text);
+            input.value = CommentArray;
+            element.parentNode.removeChild(element);
+        }
+
+        function isEmptyOrSpaces(str) {
+            return !str || !str.trim();
+        }
+
+        function showmodal() {
+            var value = document.getElementById("TraceBy").value;
+            if (value == 1) {
+                $('#LocationModal').modal('show');
+            }
+
+        }
+
+        function fillOrignial(value) {
+            document.getElementById("ParameterBack").value = value;
+
+        }
+
+    </script>
+
+
+}

@@ -1,0 +1,48 @@
+﻿@model InstagarmBot.Models.Follow
+@{ 
+    ViewBag.removedDiv = "follow";
+
+}
+
+<div class="Row">
+    <div class="col-md-12">
+        <div class="box box-danger">
+            <div class="box-header with-border">
+                <h3 class="box-title">    فالوو خودکار   </h3>
+            </div>
+            <div class="box-body">
+                <div class="row">
+                    <form id="frmbot" method="post">
+
+
+                        @Html.ValidationSummary("", new { @class = "text-danger" })
+                    
+                        <div class="form-group col-sm-3">
+                            <label id="lable_FollowFrom" for="FollowFrom">فالوو از  </label>
+                            <select asp-for="followFrom" asp-items="Html.GetEnumSelectList<FollowFrom>()" id="FollowFrom" class="form-control"></select>
+                        </div>
+
+                        <div class="form-group col-sm-3">
+                            <label id="lable_Count" for="count">  تعداد </label>
+                            <input type="text" asp-for="count" id="Count" class="form-control" placeholder="تعداد هدف">
+                        </div>
+
+
+
+                        <div class="form-group col-sm-4 col-sm-offset-4">
+                            <br />
+                            <input id="start" type="submit" class="form-control btn btn-danger" value="شروع" />
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+            <!-- /.box-body -->
+
+
+        </div>
+
+
+    </div>
+
+</div>

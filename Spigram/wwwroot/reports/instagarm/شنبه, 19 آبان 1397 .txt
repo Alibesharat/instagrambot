@@ -1,0 +1,37 @@
+شنبه, 19 آبان 1397
+#01:23:02 ب.ظ : Object reference not set to an instance of an object.
+#01:23:02 ب.ظ : توقف دستی
+#01:23:02 ب.ظ : فعالیت  ربات به پایان رسید
+#01:23:02 ب.ظ : ربات خاموش شد
+#01:23:29 ب.ظ : شروع فعالیت ربات
+#01:23:44 ب.ظ : تاخیر عمدی  - 1428 میلی ثانیه
+#01:23:51 ب.ظ : تاخیر عمدی  - 2749 میلی ثانیه
+#01:23:56 ب.ظ : تاخیر عمدی  - 2353 میلی ثانیه
+#01:23:58 ب.ظ : ورود موفقیت آمیز
+#01:23:58 ب.ظ : جستجوی برای هشتگ - JSJ
+#01:24:10 ب.ظ : تاخیر عمدی  - 1399 میلی ثانیه
+#01:24:38 ب.ظ : مشکلی بوجود آمد
+#01:24:38 ب.ظ : The HTTP request to the remote WebDriver server for URL http://localhost:52235/session/63e7ecf5-43d9-4ce9-a679-428d10140225/url timed out after 25 seconds.
+#01:24:58 ب.ظ : مشکلی بوجود آمد
+#01:24:58 ب.ظ : Browsing context has been discarded
+#01:25:03 ب.ظ : مشکلی بوجود آمد
+#01:25:03 ب.ظ : Failed to decode response from marionette
+#01:25:04 ب.ظ : مشکلی بوجود آمد
+#01:25:04 ب.ظ : Tried to run command without establishing a connection (SessionNotCreated)
+#01:25:05 ب.ظ : مشکلی بوجود آمد
+#01:25:05 ب.ظ : Tried to run command without establishing a connection (SessionNotCreated)
+#01:25:06 ب.ظ : مشکلی بوجود آمد
+#01:25:06 ب.ظ : Tried to run command without establishing a connection (SessionNotCreated)
+#01:25:07 ب.ظ : مشکلی بوجود آمد
+#01:25:07 ب.ظ : Tried to run command without establishing a connection (SessionNotCreated)
+#01:25:08 ب.ظ : مشکلی بوجود آمد
+#01:25:08 ب.ظ : Tried to run command without establishing a connection (SessionNotCreated)
+#01:25:09 ب.ظ : Object reference not set to an instance of an object.
+#01:25:09 ب.ظ : توقف دستی
+#01:25:09 ب.ظ : فعالیت  ربات به پایان رسید
+#01:25:09 ب.ظ : ربات خاموش شد
+#01:25:09 ب.ظ : مشکلی بوجود آمد
+#01:25:09 ب.ظ : Tried to run command without establishing a connection (SessionNotCreated)
+#01:25:11 ب.ظ : مشکلی بوجود آمد
+#01:25:11 ب.ظ : Tried to run command without establishing a connection (SessionNotCreated)
+
